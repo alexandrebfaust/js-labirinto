@@ -1,198 +1,547 @@
-<!DOCTYPE html>
+
 <html>
-<head>
-    <title>Labirinto</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style type="text/css">
-        html {
-            overflow: hidden;
-        }
-        .col-2 {
-            text-align: center;
-            height: 60px !important;
-            width: 60px !important;
-        }
-        .colbg {
-            background-image: url('colbg.png');
-        }
-        h1 {
-            text-align: center;
-        }
-        .container {
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(to bottom right, #212121, #000000); 
-        }
-    </style>
-</head>
-<body>
+    <head>
+        <title>Labirinto</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet">
+        <!--<link href="index.css" rel="stylesheet">-->
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style type="text/css">
+        	html{
+        		overflow: hidden;
+        	}
+        	.col-md-2{
+        		text-align: center;
+        		height: 60px !important;
+        		width: 60px !important;
+        	}
+        	.colbg{
+        		background-image: url('colbg.png');
+        	}
+        	h1{
+        		text-align: center;
+        	}
+        	.container{
+        		width: 100%;
+        		height: 100%;
+        		background-image: linear-gradient(to bottom right, #212121, #000000); 
+        	}
+        </style>
+	</head>
+	<body>
 
-<div class="container"><br>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+	<div class="container"><br>
+		<div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
             <!-- conteudo -->
-            <div class="card">
-                <div class="card-body">
-                    <div id="game-board"></div>
-                    <br>
-                    <div><h1 id="p1kills">Player 1: 0</h1></div>
-                    <div><h1 id="p2kills">Player 2: 0</h1></div>
+	            <div class="panel">
+	                <div class="panel-body"><!--<h1>Labirinto</h1><br><br>-->
+	                <center>
+	                	<div class="row" id="linha1">
+		                	<div id="pos-1-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-1-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-1-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-1-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-1-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-1-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-1-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-1-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-1-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha2">
+		                	<div id="pos-2-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-2-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-2-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-2-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-2-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-2-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-2-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-2-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-2-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha3">
+		                	<div id="pos-3-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-3-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-3-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-3-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-3-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-3-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-3-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-3-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-3-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha4">
+		                	<div id="pos-4-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-4-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-4-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-4-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-4-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-4-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-4-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-4-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-4-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha5">
+		                	<div id="pos-5-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-5-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-5-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-5-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-5-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-5-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-5-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-5-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-5-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha6">
+		                	<div id="pos-6-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-6-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-6-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-6-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-6-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-6-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-6-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-6-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-6-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha7">
+		                	<div id="pos-7-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-7-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-7-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-7-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-7-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-7-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-7-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-7-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-7-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha8">
+		                	<div id="pos-8-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-8-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-8-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-8-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-8-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-8-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-8-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-8-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-8-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div>
+	                	<div class="row" id="linha9">
+		                	<div id="pos-9-1" class="col-md-2"><img src='vazio.png'></div><!-- Linha - Coluna -->
+		                	<div id="pos-9-2" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-9-3" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-9-4" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-9-5" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-9-6" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-9-7" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-9-8" class="col-md-2"><img src='vazio.png'></div>
+		                	<div id="pos-9-9" class="col-md-2"><img src='vazio.png'></div>
+	                	</div><br>
+	                	</center><br>
+	                	<div style="color: "><h1 id="p1kills">Player 1: 0</h1></div>
+	                	<div><h1 id="p2kills">Player 2: 0</h1></div>
+	                </div>
                 </div>
-            </div>
             <!-- conteudo -->
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function createGameBoard() {
-        const board = document.getElementById('game-board');
-        for (let i = 1; i <= 9; i++) {
-            const row = document.createElement('div');
-            row.className = 'row';
-            row.id = 'linha' + i;
-            for (let j = 1; j <= 9; j++) {
-                const cell = document.createElement('div');
-                cell.id = 'pos-' + i + '-' + j;
-                cell.className = 'col-2';
-                cell.innerHTML = "<img src='vazio.png'>";
-                row.appendChild(cell);
-            }
-            board.appendChild(row);
-        }
-    }
+            </div>
+            <div class="col-md-3"></div>
+	</div>
 
-	function updateMap() {
-		for (var i = 0; i < 9; i++) {
-			for (var j = 0; j < 9; j++) {
-				if(!map[i][j]){
-					$("#pos-" + (i + 1) + "-" + (j + 1)).html(youshallnotpass);
+		<script type="text/javascript">
+
+			var p1posx = 1; //Largura
+			var p1posy = 1; //Altura
+
+			var p1mapx = p1posx - 1; //0
+			var p1mapy = p1posy - 1; //0
+
+			var p2posx = 9; //Largura
+			var p2posy = 9; //Altura
+
+			var p2mapx = p2posx - 1; //0
+			var p2mapy = p2posy - 1; //0
+
+			var pontop1 = 0;
+			var pontop2 = 0;
+
+			var p1 = "<img src='p1.png'>";
+			var p2 = "<img src='p2.png'>";
+			var vazio = "<img src='vazio.png'>";
+			var slime = "<img src='slime.gif'>";
+			var youshallnotpass = "<img src='youshallnotpass.png'>"
+
+			var slimex = Math.floor(Math.random() * 6) + 1;
+			var slimey = Math.floor(Math.random() * 6) + 1;
+			var mapsy = slimey - 1;
+			var mapsx = slimex - 1;
+			var slimelife = 0;
+			var aslimex = slimex;
+			var aslimey = slimey;
+
+			/*var map = [
+			[true, true, true, true, true, true],
+			[true, true, true, false, true, false],
+			[true, false, true, true, true, true],
+			[true, true, true, true, true, false],
+			[true, false, true, false, true, true],
+			[false, true, true, true, true, true]
+			];*/
+
+			var map = [
+			[true, true, true, true, true, true, true, true, true],
+			[true, false, true, true, false, true, true, false, true],
+			[true, true, true, true, true, true, true, true, true],
+			[true, true, true, true, true, true , true, true, true],
+			[true, false, true, true, false, true, true, false, true],
+			[true, true, true, true, true, true, true, true, true],
+			[true, true, true, true, true, true, true, true, true],
+			[true, false, true, true, false, true, true, false, true],
+			[true, true, true, true, true, true, true, true, true]
+			];
+
+
+			setInterval(function(){
+				
+
+				if(map[mapsy][mapsx] == true){
+					if((slimex != p1posx) || (slimey != p1posy)){
+						if((slimex != p2posx) || (slimey != p2posy)){
+							if(slimelife == 0){
+								$("#pos-"+slimey+"-"+slimex).html(vazio);
+								$("#pos-"+slimey+"-"+slimex).html(slime);
+								slimelife = 1;
+								aslimex = slimex;
+								aslimey = slimey;
+							}
+							//console.log("Printou slime X: " + slimex + ", Y: " + slimey);
+
+						}
+					}
 				}
-			}
-		}
-	}
+				else{
+					//console.log("Posicao existente slime X: " + slimex + ", Y: " + slimey);
 
-	function movePlayer(player, direction) {
-		let newPosx = player.posx;
-		let newPosy = player.posy;
-		
-		if(direction === 'down' && player.posy < 9) newPosy++;
-		if(direction === 'up' && player.posy > 1) newPosy--;
-		if(direction === 'right' && player.posx < 9) newPosx++;
-		if(direction === 'left' && player.posx > 1) newPosx--;
-		
-		let newMapx = newPosx - 1;
-		let newMapy = newPosy - 1;
-		
-		if(map[newMapy][newMapx] && (newMapy !== p1.mapy || newMapx !== p1.mapx) && (newMapy !== p2.mapy || newMapx !== p2.mapx)){
-			$("#pos-" + player.posy + "-" + player.posx).html(vazio);
-			player.posx = newPosx;
-			player.posy = newPosy;
-			player.mapx = newMapx;
-			player.mapy = newMapy;
-			$("#pos-" + player.posy + "-" + player.posx).html(player.img);
+
+				}
+				//console.log('parou?!');
+				slimex = Math.floor(Math.random() * 6) + 1;
+				slimey = Math.floor(Math.random() * 6) + 1;
+				mapsy = slimey - 1;
+				mapsx = slimex - 1;
+
+			}, 2000);
+
+
+
 			
-			if(player.posy == aslimey && player.posx == aslimex){
-				player.ponto++;
-				slimelife = 0;
-				aslimex = 0;
-				aslimey = 0;
-				$("#p" + (player === p1 ? 1 : 2) + "kills").html("Player " + (player === p1 ? 1 : 2) + ": " + player.ponto);
+			for (var i1 = 0; i1 < 9; i1++) {
+				if(map[0][i1] == false){
+					var j1 = i1 + 1;
+					$("#pos-1-"+j1).html(youshallnotpass);};
 			}
-		}
-	}
 
-	createGameBoard();
-
-
-	var p1 = {
-		posx: 1,
-		posy: 1,
-		mapx: 0,
-		mapy: 0,
-		ponto: 0,
-		img: "<img src='p1.png'>"
-	};
-
-	var p2 = {
-		posx: 9,
-		posy: 9,
-		mapx: 8,
-		mapy: 8,
-		ponto: 0,
-		img: "<img src='p2.png'>"
-	};
-
-	var vazio = "<img src='vazio.png'>";
-	var slime = "<img src='slime.gif'>";
-	var youshallnotpass = "<img src='youshallnotpass.png'>";
-
-	var slimex = Math.floor(Math.random() * 6) + 1;
-	var slimey = Math.floor(Math.random() * 6) + 1;
-	var mapsy = slimey - 1;
-	var mapsx = slimex - 1;
-	var slimelife = 0;
-	var aslimex = slimex;
-	var aslimey = slimey;
-
-	var map = [
-		[true, true, true, true, true, true, true, true, true],
-		[true, false, true, true, false, true, true, false, true],
-		[true, true, true, true, true, true, true, true, true],
-		[true, true, true, true, true, true, true, true, true],
-		[true, false, true, true, false, true, true, false, true],
-		[true, true, true, true, true, true, true, true, true],
-		[true, true, true, true, true, true, true, true, true],
-		[true, false, true, true, false, true, true, false, true],
-		[true, true, true, true, true, true, true, true, true]
-	];
-
-	setInterval(function(){
-		if(map[mapsy][mapsx]){
-			if((slimex != p1.posx || slimey != p1.posy) && (slimex != p2.posx || slimey != p2.posy)){
-				if(slimelife == 0){
-					$("#pos-" + slimey + "-" + slimex).html(vazio).html(slime);
-					slimelife = 1;
-					aslimex = slimex;
-					aslimey = slimey;
-				}
+			for (var i2 = 0; i2 < 9; i2++) {
+				if(map[1][i2] == false){
+					var j2 = i2 + 1;
+					$("#pos-2-"+j2).html(youshallnotpass);};
 			}
-		}
 
-		slimex = Math.floor(Math.random() * 6) + 1;
-		slimey = Math.floor(Math.random() * 6) + 1;
-		mapsy = slimey - 1;
-		mapsx = slimex - 1;
-	}, 2000);
+			for (var i3 = 0; i3 < 9; i3++) {
+				if(map[2][i3] == false){
+					var j3 = i3 + 1;
+					$("#pos-3-"+j3).html(youshallnotpass);};
+
+			}
+
+			for (var i4 = 0; i4 < 9; i4++) {
+				if(map[3][i4] == false){
+					var j4 = i4 + 1;
+					$("#pos-4-"+j4).html(youshallnotpass);};
+			}
+
+			for (var i5 = 0; i5 < 9; i5++) {
+				if(map[4][i5] == false){
+					var j5 = i5 + 1;
+					$("#pos-5-"+j5).html(youshallnotpass);};
+			}
+
+			for (var i6 = 0; i6 < 9; i6++) {
+				if(map[5][i6] == false){
+					var j6 = i6 + 1;
+					$("#pos-6-"+j6).html(youshallnotpass);};
+			}
+
+			for (var i7 = 0; i7 < 9; i7++) {
+				if(map[6][i7] == false){
+					var j7 = i7 + 1;
+					$("#pos-7-"+j7).html(youshallnotpass);};
+			}
+
+			for (var i8 = 0; i8 < 9; i8++) {
+				if(map[7][i8] == false){
+					var j8 = i8 + 1;
+					$("#pos-8-"+j8).html(youshallnotpass);};
+			}
+
+			for (var i9 = 0; i9 < 9; i9++) {
+				if(map[8][i9] == false){
+					var j9 = i9 + 1;
+					$("#pos-9-"+j9).html(youshallnotpass);};
+			}
+
+			$("#pos-"+p1posy+"-"+p1posx).html(p1);
+			//console.log('carregou');
+
+			$(document).keydown(function(e) {
+                if((e.keyCode || e.which) == 83) { //Baixo
+                	if(p1posy < 9){
+                		p1mapy = p1mapy + 1;
+                		if(map[p1mapy][p1mapx] == true){
+                			if((p1mapy != p2mapy) || (p1mapx != p2mapx)){
+	                			$("#pos-"+p1posy+"-"+p1posx).html(vazio);
+	                		  	p1posy = p1posy+1;
+			                    $("#pos-"+p1posy+"-"+p1posx).html(p1);
+			                    if((p1posy == aslimey) && (p1posx == aslimex)){
+                					pontop1 = pontop1 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p1kills").html("Player 1: "+pontop1);
+                				}
+			                    //console.log("X: " + p1posx + ", Y: " + p1posy);
+			                }
+			                else{
+		                    	//console.log('jogador - baixo');
+		                    	p1mapy = p1mapy - 1;
+		                    }
+	                    }
+	                    else{
+	                    	//console.log('barreira - baixo');
+	                    	p1mapy = p1mapy - 1;
+	                    }
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - baixo');}
+                }
+                if((e.keyCode || e.which) == 87) { //Cima
+                	if(p1posy > 1){
+                		p1mapy = p1mapy - 1;
+                		if(map[p1mapy][p1mapx] == true){
+                			if((p1mapy != p2mapy) || (p1mapx != p2mapx)){
+			            		$("#pos-"+p1posy+"-"+p1posx).html(vazio);
+			                	p1posy = p1posy-1;
+			                	$("#pos-"+p1posy+"-"+p1posx).html(p1);
+			                	if((p1posy == aslimey) && (p1posx == aslimex)){
+                					pontop1 = pontop1 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p1kills").html("Player 1: "+pontop1);
+                				}
+			                    //console.log("X: " + p1posx + ", Y: " + p1posy);
+			                }
+			                else{
+		                    	//console.log('jogador - cima');
+		                    	p1mapy = p1mapy + 1;
+		                    }
+		            }
+		                else{
+	                    	//console.log('barreira - cima');
+	                    	p1mapy = p1mapy + 1;
+	                    }
+
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - cima');}
+                }
+                if((e.keyCode || e.which) == 68) { //Direita
+                	if(p1posx < 9){
+                		p1mapx = p1mapx + 1;
+                		if(map[p1mapy][p1mapx] == true){
+                			if((p1mapy != p2mapy) || (p1mapx != p2mapx)){
+			                	$("#pos-"+p1posy+"-"+p1posx).html(vazio);
+			                	p1posx = p1posx+1;
+			                	$("#pos-"+p1posy+"-"+p1posx).html(p1);
+			                	if((p1posy == aslimey) && (p1posx == aslimex)){
+                					pontop1 = pontop1 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p1kills").html("Player 1: "+pontop1);
+                				}
+			                    //console.log("X: " + p1posx + ", Y: " + p1posy);
+			                }
+			                else{
+	                    	//console.log('jogador - direita');
+	                    	p1mapx = p1mapx - 1;
+	                    	}
+		                }
+		                else{
+	                    	//console.log('barreira - direita');
+	                    	p1mapx = p1mapx - 1;
+	                    }
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - direita');}
+                }
+                if((e.keyCode || e.which) == 65) { //Esquerda
+                	if(p1posx > 1){
+                		p1mapx = p1mapx - 1;
+                		if(map[p1mapy][p1mapx] == true){
+                			if((p1mapy != p2mapy) || (p1mapx != p2mapx)){
+			            		$("#pos-"+p1posy+"-"+p1posx).html(vazio);
+			                	p1posx = p1posx-1;
+			                	$("#pos-"+p1posy+"-"+p1posx).html(p1);
+			                	if((p1posy == aslimey) && (p1posx == aslimex)){
+                					pontop1 = pontop1 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p1kills").html("Player 1: "+pontop1);
+                				}
+			                    //console.log("X: " + p1posx + ", Y: " + p1posy);
+			                }
+			                else{
+	                    	//console.log('jogador - esquerda');
+	                    	p1mapx = p1mapx + 1;
+	                    	}
+		                }
+		                else{
+	                    	//console.log('barreira - esquerda');
+	                    	p1mapx = p1mapx + 1;
+	                    }
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - esquerda');}
+                }
+            });
+
+            $("#pos-"+p2posy+"-"+p2posx).html(p2);
+			//console.log('carregou');
+
+			$(document).keydown(function(e) {
+                if((e.keyCode || e.which) == 40) { //Baixo
+                	if(p2posy < 9){
+                		p2mapy = p2mapy + 1;
+                		if(map[p2mapy][p2mapx] == true){
+                			if((p2mapy != p1mapy) || (p2mapx != p1mapx)){
+	                			$("#pos-"+p2posy+"-"+p2posx).html(vazio);
+	                		  	p2posy = p2posy+1;
+			                    $("#pos-"+p2posy+"-"+p2posx).html(p2);
+			                    if((p2posy == aslimey) && (p2posx == aslimex)){
+                					pontop2 = pontop2 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p2kills").html("Player 2: "+pontop2);
+                				}
+			                    //console.log("X: " + p2posx + ", Y: " + p2posy);
+			                }
+			                else{
+		                    	//console.log('jogador - baixo');
+		                    	p2mapy = p2mapy - 1;
+		                    }
+	                    }
+	                    else{
+	                    	//console.log('barreira - baixo');
+	                    	p2mapy = p2mapy - 1;
+	                    }
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - baixo');}
+                }
+                if((e.keyCode || e.which) == 38) { //Cima
+                	if(p2posy > 1){
+                		p2mapy = p2mapy - 1;
+                		if(map[p2mapy][p2mapx] == true){
+                			if((p2mapy != p1mapy) || (p2mapx != p1mapx)){
+			            		$("#pos-"+p2posy+"-"+p2posx).html(vazio);
+			                	p2posy = p2posy-1;
+			                	$("#pos-"+p2posy+"-"+p2posx).html(p2);
+			                	if((p2posy == aslimey) && (p2posx == aslimex)){
+                					pontop2 = pontop2 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p2kills").html("Player 2: "+pontop2);
+                				}
+			                    //console.log("X: " + p2posx + ", Y: " + p2posy);
+			                }
+			                else{
+		                    	//console.log('jogador - cima');
+		                    	p2mapy = p2mapy + 1;
+		                    }
+		            }
+		                else{
+	                    	//console.log('barreira - cima');
+	                    	p2mapy = p2mapy + 1;
+	                    }
+
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - cima');}
+                }
+                if((e.keyCode || e.which) == 39) { //Direita
+                	if(p2posx < 9){
+                		p2mapx = p2mapx + 1;
+                		if(map[p2mapy][p2mapx] == true){
+                			if((p2mapy != p1mapy) || (p2mapx != p1mapx)){
+			                	$("#pos-"+p2posy+"-"+p2posx).html(vazio);
+			                	p2posx = p2posx+1;
+			                	$("#pos-"+p2posy+"-"+p2posx).html(p2);
+			                	if((p2posy == aslimey) && (p2posx == aslimex)){
+                					pontop2 = pontop2 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p2kills").html("Player 2: "+pontop2);
+                				}
+			                    //console.log("X: " + p2posx + ", Y: " + p2posy);
+			                }
+			                else{
+	                    	//console.log('jogador - direita');
+	                    	p2mapx = p2mapx - 1;
+	                    	}
+		                }
+		                else{
+	                    	//console.log('barreira - direita');
+	                    	p2mapx = p2mapx - 1;
+	                    }
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - direita');}
+                }
+                if((e.keyCode || e.which) == 37) { //Esquerda
+                	if(p2posx > 1){
+                		p2mapx = p2mapx - 1;
+                		if(map[p2mapy][p2mapx] == true){
+                			if((p2mapy != p1mapy) || (p2mapx != p1mapx)){
+			            		$("#pos-"+p2posy+"-"+p2posx).html(vazio);
+			                	p2posx = p2posx-1;
+			                	$("#pos-"+p2posy+"-"+p2posx).html(p2);
+			                	if((p2posy == aslimey) && (p2posx == aslimex)){
+                					pontop2 = pontop2 + 1;
+                					slimelife = 0;
+                					aslimex = 0;
+                					aslimey = 0;
+                					$("#p2kills").html("Player 2: "+pontop2);
+                				}
+			                    //console.log("X: " + p2posx + ", Y: " + p2posy);
+			                }
+			                else{
+	                    	//console.log('jogador - esquerda');
+	                    	p2mapx = p2mapx + 1;
+	                    	}
+		                }
+		                else{
+	                    	//console.log('barreira - esquerda');
+	                    	p2mapx = p2mapx + 1;
+	                    }
+                    }
+                    //else{console.log('Voce nao pode mais andar nessa direcao - esquerda');}
+                }
+            });
 
 
-	updateMap();
-
-	$("#pos-" + p1.posy + "-" + p1.posx).html(p1.img);
-	$("#pos-" + p2.posy + "-" + p2.posx).html(p2.img);
-
-	
-
-	$(document).keydown(function(e) {
-		switch(e.keyCode || e.which) {
-			case 83: movePlayer(p1, 'down'); break;  // S key
-			case 87: movePlayer(p1, 'up'); break;    // W key
-			case 68: movePlayer(p1, 'right'); break; // D key
-			case 65: movePlayer(p1, 'left'); break;  // A key
-			case 40: movePlayer(p2, 'down'); break;  // Down arrow key
-			case 38: movePlayer(p2, 'up'); break;    // Up arrow key
-			case 39: movePlayer(p2, 'right'); break; // Right arrow key
-			case 37: movePlayer(p2, 'left'); break;  // Left arrow key
-		}
-	});
-
-	console.log('carregou');
+			console.log('carregou');
 
 		</script>
     </body>
